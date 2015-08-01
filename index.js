@@ -12,7 +12,12 @@ function createMainWindow () {
 	const win = new BrowserWindow({
 		width: 800,
 		height: 640,
-		resizable: true
+		'min-width': 800,
+		'min-height': 400,
+		resizable: true,
+		'standard-window': false,
+		'fullscreen': false,
+		'frame': false
 	});
 
 	win.loadUrl(`file://${__dirname}/index.html`);

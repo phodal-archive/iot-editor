@@ -1,8 +1,8 @@
 {
   "name": "iot-editor",
   "productName": "IotEditor",
-  "version": "0.0.0",
-  "description": "My extraordinary app",
+  "version": "0.0.1",
+  "description": "A Internet of Things Editor",
   "license": "MIT",
   "main": "index.js",
   "repository": "iot-works/iot-editor",
@@ -16,7 +16,9 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore=dist --prune --asar --all --version=0.30.0"
+    "build": "browserify -d -t reactify -o public/bundle.js src/main.js",
+    "watch": "watchify src/*.js -o bundle.js",
+    "rebuild": "electron-packager . $npm_package_productName --out=dist --ignore=dist --prune --asar --all --version=0.30.0"
   },
   "files": [
     "index.js",
@@ -27,10 +29,16 @@
     "electron-app"
   ],
   "dependencies": {
-    "electron-debug": "^0.1.1"
+    "codemirror": "^5.5.0",
+    "electron-debug": "^0.1.1",
+    "mqtt": "^1.1.5",
+    "react": "^0.13.3"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",
-    "electron-prebuilt": "^0.30.0"
+    "electron-prebuilt": "^0.30.0",
+    "browserify": "^10.2.0",
+    "reactify": "^1.1.1",
+    "watchify": "^3.2.1"
   }
 }
