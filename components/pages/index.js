@@ -1,9 +1,9 @@
 import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import ContactPage from './ContactPage';
+import DebugPage from './DebugPage';
+import NodeMCUPage from './NodeMCUPage';
 
 export default {
   HomePage,
-  AboutPage,
-  ContactPage
+  DebugPage,
+  NodeMCUPage
 };

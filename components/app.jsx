@@ -3,7 +3,7 @@ import Router from 'react-router';
 import { RouteHandler, Route, Navigation } from 'react-router';
 import { Nav, Navbar } from 'react-bootstrap';
 import { NavItemLink } from 'react-router-bootstrap';
-import { HomePage, AboutPage, ContactPage } from './pages';
+import { HomePage, NodeMCUPage, DebugPage } from './pages';
 
 var remote = window.require('remote');
 var runtime = remote.require('./core/runtime');
@@ -41,8 +41,12 @@ const App = React.createClass({
             <NavItemLink to="home">
               <i className="fa fa-lg fa-home"></i>
             </NavItemLink>
-            <NavItemLink to="about" className="icon-bug"></NavItemLink>
-            <NavItemLink to="contact">Contact</NavItemLink>
+            <NavItemLink to="nodemcu">
+              <i className="fa fa-lg fa-rocket"></i>
+            </NavItemLink>
+            <NavItemLink to="debug">
+              <i className="fa fa-lg fa-bug"></i>
+            </NavItemLink>
             {links}
           </Nav>
         </Navbar>
@@ -56,8 +60,8 @@ const App = React.createClass({
 var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="home" path="/" handler={HomePage} />
-    <Route name="about" handler={AboutPage} />
-    <Route name="contact" handler={ContactPage} />
+    <Route name="debug" handler={DebugPage} />
+    <Route name="nodemcu" handler={NodeMCUPage} />
     { _routes }
   </Route>
 );
