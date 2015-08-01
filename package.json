@@ -16,9 +16,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "browserify -d -t reactify -o public/bundle.js src/main.js",
-    "watch": "watchify src/*.js -o bundle.js",
-    "rebuild": "electron-packager . $npm_package_productName --out=dist --ignore=dist --prune --asar --all --version=0.30.0"
+    "build": "electron-packager . $npm_package_productName --out=dist --ignore=dist --prune --asar --all --version=0.30.0"
   },
   "files": [
     "index.js",
