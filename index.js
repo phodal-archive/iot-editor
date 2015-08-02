@@ -78,6 +78,7 @@ app.on('ready', function () {
 
 		client.on('connect', function () {
 			client.subscribe(arg.mqttTopic);
+			console.log(arg.mqttMessage);
 			client.publish(arg.mqttTopic, arg.mqttMessage);
 			event.returnValue = {
 				connected: true

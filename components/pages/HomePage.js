@@ -27,6 +27,7 @@ class HomePage extends React.Component {
 		this.handleRequestServer = this.handleRequestServer.bind(this);
 		this.handleServerURLChange = this.handleServerURLChange.bind(this);
 		this.handleServerTopicChange = this.handleServerTopicChange.bind(this);
+		this.handleServerMessageChange = this.handleServerMessageChange.bind(this);
 	}
 
 	handleServerURLChange(event) {
@@ -35,6 +36,10 @@ class HomePage extends React.Component {
 
 	handleServerTopicChange(event) {
 		this.setState({mqttTopic: event.target.value});
+	}
+
+	handleServerMessageChange(event) {
+		this.setState({mqttMessage: event.target.value});
 	}
 
 	render() {
@@ -62,6 +67,7 @@ class HomePage extends React.Component {
 						<TextField
 							hintText="Topic"
 							defaultValue={mqttTopic}
+							onChange={this.handleServerTopicChange}
 							floatingLabelText="Topic"/>
 					</CardActions>
 
@@ -70,6 +76,7 @@ class HomePage extends React.Component {
 							hintText="Message"
 							floatingLabelText="Message"
 							defaultValue={mqttMessage}
+							onChange={this.handleServerMessageChange}
 							multiLine={true}/>
 
 						<FlatButton label="确定" secondary={true} onClick={this.handleRequestServer}/>
@@ -95,7 +102,6 @@ class HomePage extends React.Component {
 
 		var that = this;
 		ipc.on('synchronous-mqtt', function(arg) {
-			console.log(arg);
 			that.setState({serverMessage: arg});
 			that.refs.snackbar.show();
 		});
