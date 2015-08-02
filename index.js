@@ -20,7 +20,7 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-
+	var subpy = require('child_process').spawn('python', [__dirname + 'extend/hello.py']);
 	runtime.emit(runtime.events.INIT_ROUTES, appMenu);
 
 	mainWindow = new BrowserWindow({
@@ -42,6 +42,7 @@ app.on('ready', function () {
 
 	mainWindow.on('closed', function () {
 		mainWindow = null;
+		subpy.kill('SIGINT');
 	});
 
 	// Dock Menu (Mac)
