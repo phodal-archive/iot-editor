@@ -10,12 +10,6 @@ var init = function (runtime) {
         navbar: true,
         handler: path.join(__dirname, '/dist/components/page1')
       });
-      runtime.routes.push({
-        route: 'test2',
-        text: 'Test 2',
-        navbar: true,
-        handler: path.join(__dirname, '/dist/components/page2')
-      });
     });
   }
 };

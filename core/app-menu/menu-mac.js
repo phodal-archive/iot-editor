@@ -109,20 +109,20 @@ var _Page = {
       }
     },
     {
-      label: 'About',
+      label: 'NodeMCU',
       click: function () {
         var mainWindow = getMainWindow();
         if (mainWindow) {
-          mainWindow.webContents.send('transitionTo', 'about');
+          mainWindow.webContents.send('transitionTo', 'nodemcu');
         }
       }
     },
     {
-      label: 'Contact',
+      label: 'Debug',
       click: function () {
         var mainWindow = getMainWindow();
         if (mainWindow) {
-          mainWindow.webContents.send('transitionTo', 'contact');
+          mainWindow.webContents.send('transitionTo', 'debug');
         }
       }
     }
