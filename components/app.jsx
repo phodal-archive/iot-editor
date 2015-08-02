@@ -42,8 +42,7 @@ const App = React.createClass({
 			<div>
 				<AppBar
 					title="Menu"
-					iconClassNameRight="muidocs-icon-navigation-expand-more"
-					onLeftIconButtonTouchTap=""/>
+					iconClassNameRight="muidocs-icon-navigation-expand-more" />
 
 				<RouteHandler />
 			</div>

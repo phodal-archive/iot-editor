@@ -3,6 +3,7 @@ var app = require('app'),
 	Menu = require('menu'),
 	runtime = require('./core/runtime'),
 	appMenu = require('./core/app-menu');
+var ipc = require('ipc');
 
 require('crash-reporter').start();
 
@@ -69,11 +70,24 @@ app.on('ready', function () {
 	} else {
 		mainWindow.setMenu(menu);
 	}
+
+
+	ipc.on('mqtt', function(event, arg) {
+		var mqtt    = require('mqtt');
+		var client  = mqtt.connect('mqtt://' + arg.mqttServer);
+
+		client.on('connect', function () {
+			client.subscribe(arg.mqttTopic);
+			client.publish(arg.mqttTopic, 'Hello mqtt');
+			event.returnValue = {
+				connected: true
+			}
+		});
+
+		client.on('message', function (topic, message) {
+			//event.sender.send('synchronous-mqtt', message.toString());
+			//console.log(message);
+			client.end();
+		});
+	});
 });
-//
-//function initMenu () {
-//	var template = [];
-//
-//	var menu = Menu.buildFromTemplate(template);
-//	Menu.setApplicationMenu(menu);
-//}
