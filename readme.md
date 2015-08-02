@@ -2,6 +2,7 @@
 
 > A Internet of Things Editor
 
+![Screenshot](screenshot.jpg)
 
 ## Dev
 
