@@ -29,14 +29,15 @@
   "dependencies": {
     "codemirror": "^5.5.0",
     "electron-debug": "^0.1.1",
+    "markdown-it": "^4.2.1",
+    "markdown-it-replace-link": "^1.0.0",
+    "material-ui": "^0.10.2",
     "mqtt": "^1.1.5",
     "react": "^0.13.3",
     "react-bootstrap": "^0.22.3",
     "react-router": "^0.13.3",
     "react-router-bootstrap": "^0.14.0",
-    "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz",
-    "markdown-it": "^4.2.1",
-    "markdown-it-replace-link": "^1.0.0"
+    "serialport": "https://github.com/suda/node-serialport/archive/master.tar.gz"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",
@@ -45,7 +46,6 @@
     "reactify": "^1.1.1",
     "watchify": "^3.2.1",
     "babelify": "^6.1.0",
-    "browserify": "^10.2.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-less": "^1.0.1",
