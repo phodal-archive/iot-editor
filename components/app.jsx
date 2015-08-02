@@ -8,7 +8,7 @@ let mui = require('material-ui'),
 	AppBar = mui.AppBar;
 var ThemeManager = require('material-ui/lib/styles/theme-manager')();
 
-ThemeManager.setTheme(ThemeManager.types.DARK);
+ThemeManager.setTheme(ThemeManager.types.LIGHT);
 
 var remote = window.require('remote');
 var runtime = remote.require('./core/runtime');
