@@ -78,15 +78,14 @@ app.on('ready', function () {
 
 		client.on('connect', function () {
 			client.subscribe(arg.mqttTopic);
-			client.publish(arg.mqttTopic, 'Hello mqtt');
+			client.publish(arg.mqttTopic, arg.mqttMessage);
 			event.returnValue = {
 				connected: true
 			}
 		});
 
 		client.on('message', function (topic, message) {
-			//event.sender.send('synchronous-mqtt', message.toString());
-			//console.log(message);
+			event.sender.send('synchronous-mqtt', message.toString());
 			client.end();
 		});
 	});

@@ -20,6 +20,7 @@ class HomePage extends React.Component {
 			autoHideDuration: 0,
 			mqttServer: 'mqtt.phodal.com',
 			mqttTopic: 'test',
+			mqttMessage: 'Hello, MQTT',
 			serverMessage: ''
 		};
 
@@ -40,6 +41,7 @@ class HomePage extends React.Component {
 		var mqttServer = this.state.mqttServer;
 		var mqttTopic = this.state.mqttTopic;
 		var serverMessage = this.state.serverMessage;
+		var mqttMessage = this.state.mqttMessage;
 
 		return (
 			<div>
@@ -65,11 +67,12 @@ class HomePage extends React.Component {
 
 					<CardActions expandable={true}>
 						<TextField
-							hintText="Hint Text (MultiLine)"
-							floatingLabelText="Floating Label Text"
+							hintText="Message"
+							floatingLabelText="Message"
+							defaultValue={mqttMessage}
 							multiLine={true}/>
 
-						<FlatButton label="确定" secondary={true} onClick={this.handleRequestServer(this.state)}/>
+						<FlatButton label="确定" secondary={true} onClick={this.handleRequestServer}/>
 					</CardActions>
 				</Card>
 
@@ -78,52 +81,24 @@ class HomePage extends React.Component {
 					message={serverMessage}
 					action="undo"
 					autoHideDuration={this.state.autoHideDuration} />
-
-				<Card initiallyExpanded={false}>
-					<CardHeader
-						title="CoAP"
-						subtitle="Constrained Application Protocol，受限制应用协议"
-						avatar={<Avatar style={{color:'red'}}>C</Avatar>}
-						showExpandableButton={true}>
-					</CardHeader>
-					<CardActions expandable={true}>
-						<TextField
-							hintText="coap服务器"
-							defaultValue="mqtt.phodal.com"
-							floatingLabelText="CoAP服务器"
-							onChange={this.handleServerURLChange}
-							/>
-						<TextField
-							hintText="Topic"
-							defaultValue="test"
-							floatingLabelText="Topic"/>
-					</CardActions>
-
-					<CardActions expandable={true}>
-						<TextField
-							hintText="Hint Text (MultiLine)"
-							floatingLabelText="Floating Label Text"
-							multiLine={true}/>
-
-						<FlatButton label="确定" secondary={true}/>
-					</CardActions>
-				</Card>
 			</div>
 		);
 	}
 
 
-	handleRequestServer(state) {
-		var result = ipc.sendSync('mqtt', state);
+	handleRequestServer(e) {
+		var result = ipc.sendSync('mqtt', this.state);
 		if(result.connected) {
 			this.setState({serverMessage: 'connected successful'});
 			this.refs.snackbar.show();
 		}
-		//
-		//ipc.on('synchronous-mqtt', function(arg) {
-		//	console.log(arg);
-		//	self.refs.snackbar.show();
-		//});
+
+		var that = this;
+		ipc.on('synchronous-mqtt', function(arg) {
+			console.log(arg);
+			that.setState({serverMessage: arg});
+			that.refs.snackbar.show();
+		});
 	}
 
 }
