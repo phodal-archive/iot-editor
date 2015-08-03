@@ -32,7 +32,7 @@ app.on('ready', function () {
 		resizable: true,
 		'standard-window': false,
 		'fullscreen': false,
-		'frame': false
+		'frame': true
 	});
 
 	// initialize runtime reference to main window
