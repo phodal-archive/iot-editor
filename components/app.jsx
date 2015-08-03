@@ -82,24 +82,12 @@ const App = React.createClass({
             },
 
             content: {
-                marginLeft: Spacing.desktopKeylineIncrement,
+                marginLeft: '62px',
                 borderLeft: 'solid 1px ' + Colors.grey300,
                 boxSizing: 'border-box',
                 minHeight: '800px',
                 height: '100%',
                 maxWidth: (Spacing.desktopKeylineIncrement * 14) + 'px'
-            },
-
-            menu: {
-                right: 'auto',
-                width: '64px',
-                minHeight: '800px',
-                height: '100%'
-
-            },
-
-            icon: {
-
             }
         };
 
@@ -116,10 +104,10 @@ const App = React.createClass({
                     <RouteHandler />
                 </div>
                 <div style={styles.secondaryNav}>
-                    <ul>
-                    <li><Link to="home">Home</Link></li>
-                    <li><Link to="debug">Debug</Link></li>
-                    <li><Link to="nodemcu">Node</Link></li>
+                    <ul className="nav navbar-nav">
+                    <li><Link to="home" className="fa fa-home"></Link></li>
+                    <li><Link to="debug" className="fa fa-bug"></Link></li>
+                    <li><Link to="nodemcu" className="fa fa-diamond"></Link></li>
                     </ul>
                 </div>
             </AppCanvas>
