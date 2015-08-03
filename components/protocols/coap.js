@@ -96,10 +96,9 @@ class CoAP extends React.Component {
 	handleRequestServer() {
 		var result = ipc.sendSync('coap', this.state);
 
-		var that = this;
 		if(result.response) {
-			that.setState(result.response);
-			that.refs.caopsnackbar.show();
+			this.setState({serverMessage: result.response});
+			this.refs.caopsnackbar.show();
 		}
 	}
 
