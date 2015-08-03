@@ -32,7 +32,7 @@ node_modules
 app/bower_components
 
 dist/app.js
-
+dist/*
 # OSX
 .DS_Store
 
