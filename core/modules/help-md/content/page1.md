@@ -1,3 +1,0 @@
-# Page1.md
-
-Markdown content for page 1 comes here...

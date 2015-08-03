@@ -69,22 +69,7 @@ module.exports = function (grunt) {
       'extra-pages': {
         files: [
           {
-            expand: true,
-            cwd: 'core/modules/extra-pages/src/components',
-            src: ['**/*.jsx'],
-            dest: 'core/modules/extra-pages/dist/components',
-            ext: '.js'
-          }
-        ]
-      },
-      'help-md': {
-        files: [
-          {
-            expand: true,
-            cwd: 'core/modules/help-md/src/components',
-            src: ['**/*.jsx'],
-            dest: 'core/modules/help-md/dist/components',
-            ext: '.js'
+          
           }
         ]
       }
@@ -123,8 +108,6 @@ module.exports = function (grunt) {
     'react',
     'watch'
   ]);
-
-  grunt.registerTask('package', ['electron', 'dist']);
 
   grunt.registerTask('dist', [
     'less:dist',
