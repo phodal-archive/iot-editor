@@ -79,7 +79,7 @@ class MQTT extends React.Component {
 							onChange={this.handleServerMessageChange}
 							multiLine={true}/>
 
-						<FlatButton label="确定" secondary={true} onClick={this.handleRequestServer}/>
+						<FlatButton label="OK" secondary={true} onClick={this.handleRequestServer}/>
 					</CardActions>
 				</Card>
 

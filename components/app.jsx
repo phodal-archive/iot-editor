@@ -40,10 +40,6 @@ const App = React.createClass({
 	render() {
 		return (
 			<div>
-				<AppBar
-					title="Menu"
-					iconClassNameRight="muidocs-icon-navigation-expand-more" />
-
 				<RouteHandler />
 			</div>
 		);
