@@ -29,7 +29,7 @@ module.exports = function (grunt) {
     less: {
       dev: {
         files: {
-          "dist/app.css": "less/app.less"
+          "app/app.css": "less/app.less"
         }
       },
       dist: {
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
           compress: true
         },
         files: {
-          "dist/app.min.css": "less/app.less"
+          "app/app.min.css": "less/app.less"
         }
       }
     },
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
       },
       app: {
         src: 'components/app.jsx',
-        dest: 'dist/app.js'
+        dest: 'app/app.js'
       }
     },
 
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
       },
       app: {
         files: {
-          'dist/app.min.js': 'dist/app.js'
+          'app/app.min.js': 'app/app.js'
         }
       }
     },
@@ -88,6 +88,19 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+
+    electron: {
+      osxBuild: {
+        options: {
+          name: 'IoT Editor',
+          dir: 'app',
+          out: 'dist',
+          version: '0.30',
+          platform: 'darwin',
+          arch: 'x64'
+        }
+      }
     }
 
   });
@@ -110,6 +123,8 @@ module.exports = function (grunt) {
     'react',
     'watch'
   ]);
+
+  grunt.registerTask('package', ['electron', 'dist']);
 
   grunt.registerTask('dist', [
     'less:dist',

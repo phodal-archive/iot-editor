@@ -32,6 +32,8 @@ node_modules
 app/bower_components
 
 dist/app.js
+app/app.js
+app/app.min.*
 dist/*
 # OSX
 .DS_Store
