@@ -27,6 +27,7 @@
     "electron-app"
   ],
   "dependencies": {
+    "coap": "^0.11.0",
     "codemirror": "^5.5.0",
     "electron-debug": "^0.1.1",
     "markdown-it": "^4.2.1",

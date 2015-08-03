@@ -78,7 +78,6 @@ app.on('ready', function () {
 
 		client.on('connect', function () {
 			client.subscribe(arg.mqttTopic);
-			console.log(arg.mqttMessage);
 			client.publish(arg.mqttTopic, arg.mqttMessage);
 			event.returnValue = {
 				connected: true
@@ -89,5 +88,19 @@ app.on('ready', function () {
 			event.sender.send('synchronous-mqtt', message.toString());
 			client.end();
 		});
+	});
+
+	ipc.on('coap', function(event, arg) {
+		var coap    = require('coap');
+		var server = 'coap://' + arg.coapServer + '/topics/' + arg.coapTopic;
+		var req  = coap.request(server);
+
+		req.on('response', function(res) {
+			event.returnValue = {
+				response: res.payload.toString()
+			}
+		});
+
+		req.end();
 	});
 });

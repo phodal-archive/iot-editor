@@ -1,5 +1,6 @@
 import React from 'react';
 import MQTT from '../protocols/mqtt.js';
+import CoAP from '../protocols/coap.js';
 
 class HomePage extends React.Component {
 	render() {
@@ -7,6 +8,7 @@ class HomePage extends React.Component {
 		return (
 			<div>
 				<MQTT />
+				<CoAP />
 			</div>
 		);
 	}
