@@ -6,17 +6,21 @@ import { NavItemLink } from 'react-router-bootstrap';
 import { HomePage, NodeMCUPage, DebugPage } from './pages';
 import Menu from 'material-ui/lib/menus/menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+var Link = Router.Link;
 
 let { Mixins, Styles } = require('material-ui');
 
 let { Spacing, Colors } = Styles;
 let { StyleResizable, StylePropable } = Mixins;
+let FileFolder = require('material-ui/lib/svg-icons/file/folder');
 
 
 let mui = require('material-ui');
 let {
     AppCanvas,
     FontIcon,
+    FlatButton,
+    Avatar,
     SvgIcon
     }
     = mui;
@@ -92,6 +96,10 @@ const App = React.createClass({
                 minHeight: '800px',
                 height: '100%'
 
+            },
+
+            icon: {
+
             }
         };
 
@@ -108,35 +116,15 @@ const App = React.createClass({
                     <RouteHandler />
                 </div>
                 <div style={styles.secondaryNav}>
-                    <Menu style={styles.menu} autoWidth={true}>
-                        <MenuItem primaryText='H'/>
-                        <MenuItem primaryText='N'/>
-                    </Menu>
+                    <ul>
+                    <li><Link to="home">Home</Link></li>
+                    <li><Link to="debug">Debug</Link></li>
+                    <li><Link to="nodemcu">Node</Link></li>
+                    </ul>
                 </div>
             </AppCanvas>
         );
     },
-
-    _getSelectedIndex() {
-        let AppMenuItems = [
-            {route: 'home', text: 'Home'},
-            {route: 'nodemcu', text: 'NodeMCU'},
-            {route: 'debug', text: 'Debug'}
-        ];
-
-        let currentItem;
-
-        for (let i = AppMenuItems.length - 1; i >= 0; i--) {
-            currentItem = AppMenuItems[i];
-            if (currentItem.route && this.context.router.isActive(currentItem.route)) {
-                return i;
-            }
-        }
-    },
-
-    _onMenuItemClick(e, index, item) {
-        this.context.router.transitionTo(item.route);
-    }
 });
 
 var routes = (
