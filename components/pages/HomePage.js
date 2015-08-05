@@ -2,11 +2,13 @@ import React from 'react';
 
 class HomePage extends React.Component {
 
-  render() {
-    return (
-      <div>HomePage</div>
-    );
-  }
+	render() {
+		var ipc = window.require('ipc');
+		ipc.sendSync('serialPort', '');
+		return (
+			<div>HomePage</div>
+		);
+	}
 
 }
 

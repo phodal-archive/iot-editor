@@ -103,4 +103,17 @@ app.on('ready', function () {
 
 		req.end();
 	});
+
+	ipc.on('serialPort', function(event, arg) {
+		var serialPort = require("serialport");
+		console.log("===============");
+		serialPort.list(function (err, ports) {
+			ports.forEach(function(port) {
+				console.log(port.comName);
+				console.log(port.pnpId);
+				console.log(port.manufacturer);
+			});
+		});
+		event.returnValue = {};
+	});
 });
